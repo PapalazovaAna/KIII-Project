@@ -1,6 +1,7 @@
 FROM openjdk:21
 WORKDIR /app
 COPY . .
+RUN chmod +x mvnw
 # Build the application using Maven Wrapper
 RUN ./mvnw clean package -DskipTests
 EXPOSE 8080
