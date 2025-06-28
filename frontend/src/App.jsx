@@ -54,6 +54,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+
 function App() {
     const [expenses, setExpenses] = useState([]);
     const [form, setForm] = useState({
@@ -65,7 +67,7 @@ function App() {
     const [editingId, setEditingId] = useState(null);
 
     const fetchExpenses = async () => {
-        const res = await axios.get('http://localhost:8080/api/expenses');
+        const res = await axios.get(`${BASE_URL}/api/expenses`);
         setExpenses(res.data);
     };
 
@@ -80,9 +82,9 @@ function App() {
     const handleSubmit = async e => {
         e.preventDefault();
         if (editingId) {
-            await axios.put(`http://localhost:8080/api/expenses/${editingId}`, form);
+            await axios.put(`${BASE_URL}/api/expenses/${editingId}`, form);
         } else {
-            await axios.post('http://localhost:8080/api/expenses', form);
+            await axios.post(`${BASE_URL}/api/expenses`, form);
         }
         setForm({ title: '', amount: '', category: '', date: '' });
         setEditingId(null);
@@ -100,7 +102,7 @@ function App() {
     };
 
     const handleDelete = async id => {
-        await axios.delete(`http://localhost:8080/api/expenses/${id}`);
+        await axios.delete(`${BASE_URL}/api/expenses/${id}`);
         fetchExpenses();
     };
 
