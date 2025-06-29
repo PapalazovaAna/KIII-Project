@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const isDocker = window.location.hostname === 'localhost';
+const BASE_URL = isDocker
+    ? 'http://localhost:8080/api'
+    : import.meta.env.VITE_API_URL;
+
 console.log(BASE_URL);
 function App() {
     const [expenses, setExpenses] = useState([]);
