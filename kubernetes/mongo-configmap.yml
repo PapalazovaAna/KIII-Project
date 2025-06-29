@@ -4,4 +4,4 @@ metadata:
   name: mongo-config
   namespace: expense-tracker
 data:
-  MONGO_DB_NAME: expensesdb
+  MONGO_DB_NAME: "expense-tracker"

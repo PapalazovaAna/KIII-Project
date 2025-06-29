@@ -6,7 +6,7 @@ metadata:
 #  annotations:
 #    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx
+#  ingressClassName: nginx
   rules:
     - host: expense.local
       http:
@@ -17,7 +17,7 @@ spec:
               service:
                 name: backend
                 port:
-                  number: 80
+                  number: 8080
           - path: /
             pathType: Prefix
             backend:
