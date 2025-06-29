@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-// const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
-const BASE_URL = '';
-
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+console.log(BASE_URL);
 function App() {
     const [expenses, setExpenses] = useState([]);
     const [form, setForm] = useState({
