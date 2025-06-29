@@ -3,16 +3,16 @@ kind: Ingress
 metadata:
   name: expense-ingress
   namespace: expense-tracker
-#  annotations:
-#    nginx.ingress.kubernetes.io/rewrite-target: /
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-#  ingressClassName: nginx
+  ingressClassName: nginx
   rules:
     - host: expense.local
       http:
         paths:
-          - path: /api
-            pathType: Prefix
+          - path: /api(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: backend

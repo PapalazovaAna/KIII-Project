@@ -15,6 +15,7 @@ function App() {
 
     const fetchExpenses = async () => {
         const res = await axios.get(`${BASE_URL}/expenses`);
+        console.log("Fetched:", res.data);
         setExpenses(res.data);
     };
 
