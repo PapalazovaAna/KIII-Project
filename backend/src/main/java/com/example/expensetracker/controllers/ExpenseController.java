@@ -18,21 +18,27 @@ public class ExpenseController {
 
     @GetMapping
     public List<Expense> getAllExpenses(){
+        System.out.println("Hello from pod: " + System.getenv("HOSTNAME"));
         return expenseService.getAllExpenses();
     }
 
     @PostMapping
     public Expense addExpense(@RequestBody Expense expense){
+
+        System.out.println("Hello from pod: " + System.getenv("HOSTNAME"));
         return expenseService.addExpense(expense);
     }
 
     @PutMapping("/{id}")
     public Expense updateExpense(@PathVariable String id, @RequestBody Expense expense) {
+        System.out.println("Hello from pod: " + System.getenv("HOSTNAME"));
         return expenseService.editExpense(id, expense);
     }
 
     @DeleteMapping("/{id}")
     public void deleteExpense(@PathVariable String id) {
+
+        System.out.println("Hello from pod: " + System.getenv("HOSTNAME"));
         expenseService.deleteExpense(id);
     }
 }
